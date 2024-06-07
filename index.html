@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Iniciar Sesión - Siman</title>
+    <script src="https://kit.fontawesome.com/c25c96d0e3.js" crossorigin="anonymous"></script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+        form {
+            max-width: 300px;
+            margin: 0 auto;
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            position: relative;
+        }
+        input[type="text"],
+        input[type="password"] {
+            width: calc(100% - 40px);
+            padding: 10px 35px 10px 40px; 
+            margin: 5px 0 20px 0;
+            box-sizing: border-box;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            position: relative; 
+        }
+        .password-icon {
+            position: absolute;
+            top: 40%;
+            left: 10px; 
+            transform: translateY(-50%);
+            cursor: pointer;
+            color: #999;
+        }
+        .password-icon:hover {
+            color: #555;
+        }
+        input[type="submit"] {
+            width: 100%;
+            padding: 10px;
+            border: none;
+            border-radius: 5px;
+            background-color: rgb(169,50,57);
+            color: #fff;
+            cursor: pointer;
+        }
+        input[type="submit"]:hover {
+            background-color: rgb(169,50,57);
+        }
+        h3 {
+            font-size: 14px;
+            margin-top: 0;
+            margin-bottom: 0;
+            font-family: Arial, Helvetica, sans-serif;
+            text-align: center;
+        }
+        .register-link, .login-link, .forgot-password-link {
+            text-align: center;
+            margin-top: 10px;
+            color: rgb(182, 76, 83);
+        }
+        .register-link a, .login-link a, .forgot-password-link a {
+            color: inherit;
+            text-decoration: none;
+        }
+        .forgot-password-link a {
+            color: rgb(182, 76, 83);
+        }
+    </style>
+</head>
+<body>
+    <form action="procesar_login.php" method="post">
+        <h3>Entrar con e-mail y contraseña</h3>
+        <input type="text" name="usuario" placeholder="Ej..ejemplo@mail.com" required>
+        <div style="position: relative;">
+            <input type="password" id="contraseña" name="contraseña" placeholder="Ingrese su Contraseña" required>
+            <i id="showPassword" class="fas fa-eye password-icon"></i>
+            <i id="hidePassword" class="fas fa-eye-slash password-icon" style="display: none;"></i>
+        </div>
+        <div class="forgot-password-link" style="text-align: right; margin-top: 5px;">
+            <a href="recuperar_contraseña.html">Olvidé mi contraseña</a>
+        </div>
+        <hr>
+        <input type="submit" value="Entrar">
+        <div class="register-link">
+            <a href="formulario_de_registro.html"> ¿No tienes cuenta? Regístrate</a>
+        </div>
+    </form>
+
+    <form action="procesar_registro.php" method="post" style="display: none;">
+        <h3>Registro con e-mail y contraseña</h3>
+        <input type="text" name="usuario" placeholder="Ej..ejemplo@mail.com" required>
+        <div style="position: relative;">
+            <input type="password" id="contraseña_registro" name="contraseña_registro" placeholder="Ingrese su Contraseña" required>
+            <i id="showPasswordRegistro" class="fas fa-eye password-icon"></i>
+            <i id="hidePasswordRegistro" class="fas fa-eye-slash password-icon" style="display: none;"></i>
+        </div>
+        <hr>
+        <input type="submit" value="Registrarse">
+    </form>
+
+    <script>
+        const showPasswordIcon = document.getElementById('showPassword');
+        const hidePasswordIcon = document.getElementById('hidePassword');
+        const showPasswordIconRegistro = document.getElementById('showPasswordRegistro');
+        const hidePasswordIconRegistro = document.getElementById('hidePasswordRegistro');
+        const passwordField = document.getElementById('contraseña');
+        const passwordFieldRegistro = document.getElementById('contraseña_registro');
+
+        showPasswordIcon.addEventListener('click', function () {
+            const type = passwordField.getAttribute('type') === 'password' ? 'text' : 'password';
+            passwordField.setAttribute('type', type);
+            showPasswordIcon.style.display = type === 'password' ? 'inline-block' : 'none';
+            hidePasswordIcon.style.display = type === 'password' ? 'none' : 'inline-block';
+        });
+        hidePasswordIcon.addEventListener('click', function () {
+            const type = passwordField.getAttribute('type') === 'text' ? 'password' : 'text';
+            passwordField.setAttribute('type', type);
+            showPasswordIcon.style.display = type === 'password' ? 'inline-block' : 'none';
+            hidePasswordIcon.style.display = type === 'password' ? 'none' : 'inline-block';
+        });
+
+        showPasswordIconRegistro.addEventListener('click', function () {
+            const type = passwordFieldRegistro.getAttribute('type') === 'password' ? 'text' : 'password';
+            passwordFieldRegistro.setAttribute('type', type);
+            showPasswordIconRegistro.style.display = type === 'password' ? 'inline-block' : 'none';
+            hidePasswordIconRegistro.style.display = type === 'password' ? 'none' : 'inline-block';
+        });
+        hidePasswordIconRegistro.addEventListener('click', function () {
+            const type = passwordFieldRegistro.getAttribute('type') === 'text' ? 'password' : 'text';
+            passwordFieldRegistro.setAttribute('type', type);
+            showPasswordIconRegistro.style.display = type === 'password' ? 'inline-block' : 'none';
+            hidePasswordIconRegistro.style.display = type === 'password' ? 'none' : 'inline-block';
+        });
+    </script>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
